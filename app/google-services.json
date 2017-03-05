@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "448696318425",
+    "firebase_url": "https://twohfirebase.firebaseio.com",
+    "project_id": "twohfirebase",
+    "storage_bucket": "twohfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448696318425:android:88f0586cc0512822",
+        "android_client_info": {
+          "package_name": "id.web.twoh.twohfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448696318425-9mclkio2c27oltanb8sn2fcvqh2v3q4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.web.twoh.twohfirebase",
+            "certificate_hash": "8d1005e4a1a364678e2c85bc1396c776d2194564"
+          }
+        },
+        {
+          "client_id": "448696318425-624qhrd2kov4otik5do7b8aep0v1in89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnrIOtNTXfF3NXAMkaH4lxEvKYWyn4qgc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448696318425-624qhrd2kov4otik5do7b8aep0v1in89.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
