@@ -47,3 +47,5 @@ captures/
 /build
 /captures
 .externalNativeBuild
+libs/
+src/main/res/drawable/
