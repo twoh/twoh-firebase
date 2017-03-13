@@ -9,6 +9,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button btAnalytics;
+    private Button btAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +23,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity( new Intent(MainActivity.this, FirebaseAnalyticsActivity.class));
             }
         });
+
+        btAuth = (Button) findViewById(R.id.bt_fbauth);
+        btAuth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(MainActivity.this, FirebaseAuthActivity.class));
+            }
+        });
+
     }
 }
