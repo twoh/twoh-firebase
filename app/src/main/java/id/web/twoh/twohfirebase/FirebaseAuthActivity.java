@@ -23,6 +23,9 @@ import com.google.firebase.auth.FirebaseUser;
 public class FirebaseAuthActivity extends AppCompatActivity {
 
     private Button btSignUp;
+    private Button btSignIn;
+    private Button btSignOut;
+
     private EditText etEmail;
     private EditText etPassword;
 
@@ -50,15 +53,24 @@ public class FirebaseAuthActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User sedang login
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Log.v(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
-                    // User sedang logout
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                    /**
+                     * Method ini akan dipanggil apabila user berhasil logout
+                     */
+                    Toast.makeText(FirebaseAuthActivity.this, "User Logout\n",
+                            Toast.LENGTH_SHORT).show();
+                    btSignOut.setEnabled(false);
+                    Log.v(TAG, "onAuthStateChanged:signed_out");
                 }
             }
+
         };
 
         btSignUp = (Button) findViewById(R.id.bt_signup);
+        btSignIn = (Button) findViewById(R.id.bt_signin);
+        btSignOut = (Button) findViewById(R.id.bt_signout);
+
         etEmail = (EditText) findViewById(R.id.et_email);
         etPassword = (EditText) findViewById(R.id.et_password);
 
@@ -72,6 +84,24 @@ public class FirebaseAuthActivity extends AppCompatActivity {
             }
         });
 
+        btSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /**
+                 * Lempar email dan password ketika tombol signin diklik
+                 */
+                signIn(etEmail.getText().toString(), etPassword.getText().toString());
+            }
+        });
+
+        btSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
+
+        checkLogin();
     }
 
     private void signUp(final String email, String password){
@@ -103,9 +133,72 @@ public class FirebaseAuthActivity extends AppCompatActivity {
 
     }
 
+    private void signIn(final String email, String password){
+
+        fAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                        /**
+                         * Jika sign in gagal, tampilkan pesan ke user. Jika sign in sukses
+                         * maka auth state listener akan dipanggil dan logic untuk menghandle
+                         * signed in user bisa dihandle di listener.
+                         */
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithEmail:failed", task.getException());
+                            Toast.makeText(FirebaseAuthActivity.this, "Proses Login Gagal\n",
+                                    Toast.LENGTH_SHORT).show();
+                        } else{
+
+                            /**
+                             * set enabled pada button logout apabila user berhasil login
+                             */
+                            btSignOut.setEnabled(true);
+                            Toast.makeText(FirebaseAuthActivity.this, "Login Berhasil\n" +
+                                            "Email "+email,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        // ... rest of code
+                    }
+                });
+    }
+
+    private void signOut(){
+
+        /**
+         * Method untuk sign out dari Firebase
+         */
+        fAuth.signOut();
+    }
+
+    private void checkLogin(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Nama email address photo uri
+            String email = user.getEmail();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            String uid = user.getUid();
+
+            Toast.makeText(FirebaseAuthActivity.this, "Login sebagai\n" + email+" "+uid,
+                    Toast.LENGTH_SHORT).show();
+            btSignOut.setEnabled(true);
+        }
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
+        fAuth.addAuthStateListener(fStateListener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         fAuth.addAuthStateListener(fStateListener);
     }
 

@@ -41,4 +41,19 @@
         android:layout_height="wrap_content"
         android:text="Sign Up" />
 
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/bt_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+
+    <Button
+        android:enabled="false"
+        android:layout_margin="10dp"
+        android:id="@+id/bt_signout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Out" />
+
 </LinearLayout>
