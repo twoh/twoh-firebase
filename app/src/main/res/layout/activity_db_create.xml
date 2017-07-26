@@ -3,4 +3,31 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/et_namabarang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama Barang"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/et_merkbarang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Merk Barang"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/et_hargabarang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Harga Barang"
+        android:inputType="number" />
+
+    <Button
+        android:text="Submit"
+        android:id="@+id/bt_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

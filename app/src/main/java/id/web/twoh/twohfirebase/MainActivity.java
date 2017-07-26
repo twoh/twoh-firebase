@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btAnalytics;
     private Button btAuth;
+    private Button btFBDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +33,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btFBDatabase = (Button) findViewById(R.id.bt_fbdatabase);
+        btFBDatabase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(MainActivity.this, FirebaseDBActivity.class));
+            }
+        });
     }
 }
