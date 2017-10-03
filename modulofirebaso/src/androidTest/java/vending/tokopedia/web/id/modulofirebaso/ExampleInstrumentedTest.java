@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("vending.tokopedia.web.id.modulofirebaso", appContext.getPackageName());
+        assertEquals("vending.tokopedia.web.id.modulofirebaso.test", appContext.getPackageName());
     }
 }
