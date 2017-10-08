@@ -35,6 +35,13 @@ public class FirebaseDBActivity extends AppCompatActivity {
                 startActivity(FirebaseDBCreateActivity.getActIntent(FirebaseDBActivity.this));
             }
         });
+
+        btViewDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(FirebaseDBReadActivity.getActIntent(FirebaseDBActivity.this));
+            }
+        });
     }
 
 }

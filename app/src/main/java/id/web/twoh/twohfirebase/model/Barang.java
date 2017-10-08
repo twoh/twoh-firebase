@@ -41,6 +41,13 @@ public class Barang {
         this.harga = harga;
     }
 
+    @Override
+    public String toString() {
+        return " "+nama+"\n" +
+                " "+merk +"\n" +
+                " "+harga;
+    }
+
     public Barang(String nm, String mrk, String hrg){
         nama = nm;
         merk = mrk;
