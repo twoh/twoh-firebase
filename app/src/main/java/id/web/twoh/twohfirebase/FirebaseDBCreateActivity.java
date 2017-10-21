@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -36,10 +37,37 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
         btSubmit = (Button) findViewById(R.id.bt_submit);
         database = FirebaseDatabase.getInstance().getReference();
 
-        btSubmit.setOnClickListener(new View.OnClickListener() {
+        final Barang barang = (Barang) getIntent().getSerializableExtra("data");
+        if(barang!=null){
+            etNama.setText(barang.getNama());
+            etMerk.setText(barang.getMerk());
+            etHarga.setText(barang.getHarga());
+            btSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    barang.setNama(etNama.getText().toString());
+                    barang.setMerk(etMerk.getText().toString());
+                    barang.setHarga(etHarga.getText().toString());
+
+                    updateBarang(barang);
+                }
+            });
+        }
+        else{
+            btSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    submitBarang(new Barang(etNama.getText().toString(),etMerk.getText().toString(),etHarga.getText().toString()));
+                }
+            });
+        }
+    }
+
+    private void updateBarang(Barang barang) {
+        database.child("barang").child(barang.getKey()).setValue(barang).addOnSuccessListener(this, new OnSuccessListener<Void>() {
             @Override
-            public void onClick(View view) {
-                submitBarang(new Barang(etNama.getText().toString(),etMerk.getText().toString(),etHarga.getText().toString()));
+            public void onSuccess(Void aVoid) {
+                finish();
             }
         });
     }

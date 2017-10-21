@@ -1,14 +1,22 @@
 package id.web.twoh.twohfirebase.adapter;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import id.web.twoh.twohfirebase.FirebaseDBCreateActivity;
+import id.web.twoh.twohfirebase.FirebaseDBReadActivity;
+import id.web.twoh.twohfirebase.FirebaseDBReadSingleActivity;
 import id.web.twoh.twohfirebase.R;
 import id.web.twoh.twohfirebase.model.Barang;
 
@@ -19,19 +27,25 @@ import id.web.twoh.twohfirebase.model.Barang;
 public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBarangRecyclerView.ViewHolder> {
 
     private ArrayList<Barang> daftarBarang;
+    private Context context;
+    FirebaseDataListener listener;
 
-    public AdapterBarangRecyclerView(ArrayList<Barang> barangs){
+    public AdapterBarangRecyclerView(ArrayList<Barang> barangs, Context ctx){
         daftarBarang = barangs;
+        context = ctx;
+        listener = (FirebaseDBReadActivity)ctx;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         // di tutorial ini kita hanya menggunakan data String untuk tiap item
-        public TextView tvTitle;
+        TextView tvTitle;
+        CardView cvMain;
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
             tvTitle = (TextView) v.findViewById(R.id.tv_namabarang);
+            cvMain = (CardView) v.findViewById(R.id.cv_main);
         }
     }
 
@@ -44,14 +58,60 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        final String name = ((Barang)daftarBarang.get(position)).getNama();
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        final String name = daftarBarang.get(position).getNama();
         System.out.println("BARANG DATA one by one "+position+daftarBarang.size());
+        holder.cvMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(FirebaseDBReadSingleActivity.getActIntent((Activity) context).putExtra("data", daftarBarang.get(position)));
+            }
+        });
+        holder.cvMain.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                //tampilkan alert dialog
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.dialog_view);
+                dialog.setTitle("Pilih Aksi");
+                dialog.show();
+
+                Button editButton = (Button) dialog.findViewById(R.id.bt_edit_data);
+                Button delButton = (Button) dialog.findViewById(R.id.bt_delete_data);
+
+                //apabila tombol edit diklik
+                editButton.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.dismiss();
+                                context.startActivity(FirebaseDBCreateActivity.getActIntent((Activity) context).putExtra("data", daftarBarang.get(position)));
+                            }
+                        }
+                );
+
+                //apabila tombol edit diklik
+                delButton.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.dismiss();
+                                listener.onDeleteData(daftarBarang.get(position), position);
+                            }
+                        }
+                );
+                return true;
+            }
+        });
         holder.tvTitle.setText(name);
     }
 
     @Override
     public int getItemCount() {
         return daftarBarang.size();
+    }
+
+    public interface FirebaseDataListener{
+        void onDeleteData(Barang barang, int position);
     }
 }
