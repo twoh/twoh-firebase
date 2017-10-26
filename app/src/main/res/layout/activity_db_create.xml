@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:padding="10dp"
+    android:gravity="center_horizontal"
     android:layout_height="match_parent">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/et_namabarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nama Barang"
         android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/et_merkbarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Merk Barang"
         android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <EditText
         android:id="@+id/et_hargabarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Harga Barang"
         android:inputType="number" />
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:text="Submit"

@@ -22,6 +22,8 @@
         <activity android:name=".FirebaseAuthActivity"/>
         <activity android:name=".FirebaseDBActivity"/>
         <activity android:name=".FirebaseDBCreateActivity"/>
+        <activity android:name=".FirebaseDBReadActivity"/>
+        <activity android:name=".FirebaseDBReadSingleActivity"/>
     </application>
 
 </manifest>
