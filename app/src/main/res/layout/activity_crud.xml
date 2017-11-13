@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/bg2"
+    android:orientation="vertical">
+
+    <TextView
+        android:background="@color/colorAccent"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TWOH.Co Realtime Database"/>
 
     <Button
-        android:text="Create Data"
+        android:layout_margin="5dp"
         android:id="@+id/bt_createdata"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Tambah Data" />
 
     <Button
-        android:text="View Data"
+        android:layout_margin="5dp"
         android:id="@+id/bt_viewdata"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Lihat Data" />
 
 </LinearLayout>
