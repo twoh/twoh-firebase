@@ -5,12 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import id.web.twoh.twohfirebase.model.Barang;
 
 /**
  * Created by Herdi_WORK on 07.05.17.

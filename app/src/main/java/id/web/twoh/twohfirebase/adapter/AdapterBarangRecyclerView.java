@@ -3,7 +3,6 @@ package id.web.twoh.twohfirebase.adapter;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +30,9 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
     FirebaseDataListener listener;
 
     public AdapterBarangRecyclerView(ArrayList<Barang> barangs, Context ctx){
+        /**
+         * Inisiasi data dan variabel yang akan digunakan
+         */
         daftarBarang = barangs;
         context = ctx;
         listener = (FirebaseDBReadActivity)ctx;
@@ -38,7 +40,11 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        // di tutorial ini kita hanya menggunakan data String untuk tiap item
+        /**
+         * Inisiasi View
+         * Di tutorial ini kita hanya menggunakan data String untuk tiap item
+         * dan juga view nya hanyalah satu TextView
+         */
         TextView tvTitle;
         CardView cvMain;
 
@@ -51,6 +57,9 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        /**
+         *  Inisiasi ViewHolder
+         */
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_barang, parent, false);
         // mengeset ukuran view, margin, padding, dan parameter layout lainnya
         ViewHolder vh = new ViewHolder(v);
@@ -59,18 +68,26 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+        /**
+         *  Menampilkan data pada view
+         */
         final String name = daftarBarang.get(position).getNama();
         System.out.println("BARANG DATA one by one "+position+daftarBarang.size());
         holder.cvMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /**
+                 *  Kodingan untuk tutorial Selanjutnya :p Read detail data
+                 */
                 context.startActivity(FirebaseDBReadSingleActivity.getActIntent((Activity) context).putExtra("data", daftarBarang.get(position)));
             }
         });
         holder.cvMain.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                //tampilkan alert dialog
+                /**
+                 *  Kodingan untuk tutorial Selanjutnya :p Delete dan update data
+                 */
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.dialog_view);
                 dialog.setTitle("Pilih Aksi");
@@ -90,7 +107,7 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
                         }
                 );
 
-                //apabila tombol edit diklik
+                //apabila tombol delete diklik
                 delButton.setOnClickListener(
                         new View.OnClickListener() {
                             @Override
@@ -108,6 +125,9 @@ public class AdapterBarangRecyclerView extends RecyclerView.Adapter<AdapterBaran
 
     @Override
     public int getItemCount() {
+        /**
+         * Mengembalikan jumlah item pada barang
+         */
         return daftarBarang.size();
     }
 
