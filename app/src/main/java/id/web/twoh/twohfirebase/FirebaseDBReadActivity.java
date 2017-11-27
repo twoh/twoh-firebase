@@ -110,6 +110,13 @@ public class FirebaseDBReadActivity extends AppCompatActivity implements Adapter
 
     @Override
     public void onDeleteData(Barang barang, final int position) {
+        /**
+         * Kode ini akan dipanggil ketika method onDeleteData
+         * dipanggil dari adapter lewat interface.
+         * Yang kemudian akan mendelete data di Firebase Realtime DB
+         * berdasarkan key barang.
+         * Jika sukses akan memunculkan SnackBar
+         */
         if(database!=null){
             database.child("barang").child(barang.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override

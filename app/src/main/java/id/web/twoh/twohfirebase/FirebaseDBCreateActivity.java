@@ -88,17 +88,28 @@ public class FirebaseDBCreateActivity extends AppCompatActivity {
     }
 
     private void updateBarang(Barang barang) {
-        database.child("barang").child(barang.getKey()).setValue(barang).addOnSuccessListener(this, new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Snackbar.make(findViewById(R.id.bt_submit), "Data berhasil diupdatekan", Snackbar.LENGTH_LONG).setAction("Oke", new View.OnClickListener() {
+        /**
+         * Baris kode yang digunakan untuk mengupdate data barang
+         * yang sudah dimasukkan di Firebase Realtime Database
+         */
+        database.child("barang") //akses parent index, ibaratnya seperti nama tabel
+                .child(barang.getKey()) //select barang berdasarkan key
+                .setValue(barang) //set value barang yang baru
+                .addOnSuccessListener(this, new OnSuccessListener<Void>() {
                     @Override
-                    public void onClick(View view) {
-                        finish();
+                    public void onSuccess(Void aVoid) {
+
+                        /**
+                         * Baris kode yang akan dipanggil apabila proses update barang sukses
+                         */
+                        Snackbar.make(findViewById(R.id.bt_submit), "Data berhasil diupdatekan", Snackbar.LENGTH_LONG).setAction("Oke", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finish();
+                            }
+                        }).show();
                     }
-                }).show();
-            }
-        });
+                });
     }
 
     private void submitBarang(Barang barang) {
