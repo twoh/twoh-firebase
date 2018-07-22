@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TWOHFirebase.iml" filepath="$PROJECT_DIR$/TWOHFirebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/modulofirebaso/modulofirebaso.iml" filepath="$PROJECT_DIR$/modulofirebaso/modulofirebaso.iml" />
       <module fileurl="file://$PROJECT_DIR$/twoh-firebase.iml" filepath="$PROJECT_DIR$/twoh-firebase.iml" />
