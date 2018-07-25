@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,32 +10,32 @@
         android:layout_margin="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TWOH Firebase"/>
+        android:text="Admob Example"/>
 
     <Button
-        android:id="@+id/bt_fbanalytics"
-        android:text="Analytics"
+        android:id="@+id/bt_adbanner"
+        android:text="Banner Ads"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/bt_fbauth"
-        android:text="Authentication"
+        android:id="@+id/bt_adinterstitial"
+        android:text="Interstitial Ads"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/bt_fbdatabase"
-        android:text="Database"
+        android:id="@+id/bt_adnative"
+        android:text="Native Ads"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/bt_fbadmob"
-        android:text="Admob"
+        android:id="@+id/bt_advideo"
+        android:text="Video Ads"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
