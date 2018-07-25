@@ -25,6 +25,11 @@
         <activity android:name=".FirebaseDBReadActivity"/>
         <activity android:name=".FirebaseDBReadSingleActivity"/>
         <activity android:name=".FirebaseAdMobActivity"/>
+        <activity android:name=".FirebaseAdMobBannerActivity"/>
+        <activity android:name=".FirebaseAdMobInterstitialActivity"/>
+        <activity android:name=".FirebaseAdMobNativeActivity"/>
+        <activity android:name=".FirebaseAdMobVideoActivity"/>
+
     </application>
 
 </manifest>

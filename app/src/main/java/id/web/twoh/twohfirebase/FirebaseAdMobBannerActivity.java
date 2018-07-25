@@ -16,7 +16,6 @@ public class FirebaseAdMobBannerActivity extends AppCompatActivity {
 
     }
 
-
     public static Intent getActIntent(Activity activity) {
         // kode untuk pengambilan Intent
         return new Intent(activity, FirebaseAdMobBannerActivity.class);

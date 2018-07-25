@@ -11,13 +11,14 @@ public class MainActivity extends AppCompatActivity {
     private Button btAnalytics;
     private Button btAuth;
     private Button btFBDatabase;
+    private Button btAdmob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btAnalytics = (Button) findViewById(R.id.bt_fbanalytics);
+        btAnalytics = findViewById(R.id.bt_fbanalytics);
         btAnalytics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btAuth = (Button) findViewById(R.id.bt_fbauth);
+        btAuth = findViewById(R.id.bt_fbauth);
         btAuth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,11 +34,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btFBDatabase = (Button) findViewById(R.id.bt_fbdatabase);
+        btFBDatabase = findViewById(R.id.bt_fbdatabase);
         btFBDatabase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity( new Intent(MainActivity.this, FirebaseDBActivity.class));
+            }
+        });
+
+        btAdmob = findViewById(R.id.bt_fbadmob);
+        btAdmob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity( new Intent(MainActivity.this, FirebaseAdMobActivity.class));
             }
         });
     }
